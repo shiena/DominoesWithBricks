@@ -5,11 +5,15 @@ using UnityEngine;
 public class ForwardTrigger : MonoBehaviour
 {
 
+    public AudioClip audioClip;
+
     private GameObject root;
 
     private bool pushed = false;
 
     private CameraController camCon;
+
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -17,6 +21,8 @@ public class ForwardTrigger : MonoBehaviour
         root = parents[parents.Length - 1].gameObject;
 
         camCon = Camera.main.GetComponent<CameraController>();
+
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -27,6 +33,7 @@ public class ForwardTrigger : MonoBehaviour
     {
         if (!pushed)
         {
+            audioSource.PlayOneShot(audioClip);
             camCon.moveCamera(root.transform.position);
             pushed = !pushed;
         }

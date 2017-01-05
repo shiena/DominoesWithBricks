@@ -7,6 +7,8 @@ public class BackTrigger : MonoBehaviour
 
     public float speed = 5.5f;
 
+    public AudioClip audioClip;
+
     private GameObject root;
 
     private bool pushed = false;
@@ -14,6 +16,8 @@ public class BackTrigger : MonoBehaviour
     private CameraController camCon;
 
     private GameManager gameManager;
+
+    private AudioSource audioSource;
 
     void Awake()
     {
@@ -23,6 +27,8 @@ public class BackTrigger : MonoBehaviour
         camCon = Camera.main.GetComponent<CameraController>();
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -33,6 +39,7 @@ public class BackTrigger : MonoBehaviour
     {
         if (!pushed)
         {
+            audioSource.PlayOneShot(audioClip);
             var stop = root.name == "StartObj";
             camCon.moveCamera(root.transform.position + Vector3.right * speed, stop);
             if (stop)
