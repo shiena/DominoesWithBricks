@@ -12,3 +12,8 @@ This is Dominoes with bricks emulated by unity.
 
 * http://opengameart.org/content/10-8bit-coin-sounds
 * http://opengameart.org/content/50-free-textures-5-with-normalmaps
+
+# License
+
+This project is distributed under the Apache License, Version 2.0 found in the [LICENSE](./LICENSE)
+file.
