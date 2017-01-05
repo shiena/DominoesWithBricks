@@ -1,7 +1,6 @@
-# Ita
+# DominoesWithBricks
 
-emulate dominoes with bricks
-
+This is Dominoes with bricks emulated by unity.
 
 ![screenshot](screenshot.png)
 
