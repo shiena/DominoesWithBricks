@@ -27,6 +27,11 @@ public class GameManager : MonoBehaviour
 
     private Button[] buttons;
 
+    void Awake()
+    {
+        GetComponent<BrickGenerator>().GenerateBricks();
+    }
+
     // Use this for initialization
     void Start()
     {

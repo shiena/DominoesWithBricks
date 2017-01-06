@@ -25,12 +25,17 @@ public class BrickGenerator : MonoBehaviour
 
     public Vector3 StartPosition;
 
-    public int Count = 29;
+    public int Count = 30;
 
-    // Use this for initialization
-    void Start()
+    private Vector3 initialPositionOffset = new Vector3(0.005f, 0, 0);
+
+    public void GenerateBricks()
     {
-        for (int index = 0; index < Count; index++)
+        var initialPosition = StartPosition + initialPositionOffset;
+        GameObject StartObj = Instantiate(brick, initialPosition, Quaternion.identity);
+        StartObj.name = "StartObj";
+
+        for (int index = 1; index < Count; index++)
         {
             Instantiate(brick, StartPosition + Vector3.left * index, Quaternion.identity);
         }
