@@ -31,7 +31,7 @@ public class ForwardTrigger : MonoBehaviour
 
     private AudioSource audioSource;
 
-    void Awake()
+    void Start()
     {
         var parents = gameObject.GetComponentsInParent(typeof(Transform));
         root = parents[parents.Length - 1].gameObject;
