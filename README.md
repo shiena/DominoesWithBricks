@@ -10,7 +10,7 @@ This is Dominoes with bricks emulated by unity.
 
 # Resources
 
-* http://opengameart.org/content/10-8bit-coin-sounds
+* https://www.freesound.org/people/Reitanna/sounds/252265/
 * http://opengameart.org/content/50-free-textures-5-with-normalmaps
 
 # License
