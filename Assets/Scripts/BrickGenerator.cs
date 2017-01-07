@@ -23,7 +23,7 @@ public class BrickGenerator : MonoBehaviour
 
     public GameObject brick;
 
-    public Vector3 StartPosition;
+    public GameObject StartPosition;
 
     public int Count = 30;
 
@@ -31,13 +31,14 @@ public class BrickGenerator : MonoBehaviour
 
     public void GenerateBricks()
     {
-        var initialPosition = StartPosition + initialPositionOffset;
+        var startPos = StartPosition.transform.position;
+        var initialPosition = startPos + initialPositionOffset;
         GameObject StartObj = Instantiate(brick, initialPosition, Quaternion.identity);
         StartObj.name = "StartObj";
 
         for (int index = 1; index < Count; index++)
         {
-            Instantiate(brick, StartPosition + Vector3.left * index, Quaternion.identity);
+            Instantiate(brick, startPos + Vector3.left * index, Quaternion.identity);
         }
     }
 }
