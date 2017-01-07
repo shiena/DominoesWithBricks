@@ -21,12 +21,14 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
 
-    public float smoothing = 5.0f;
+    public float smoothing = 0.1f;
 
     private Vector3 targetPos;
     private Vector3 offset;
 
     private bool stop = false;
+
+    private Vector3 velocity = Vector3.zero;
 
     // Use this for initialization
     void Start()
@@ -42,7 +44,7 @@ public class CameraController : MonoBehaviour
         {
             var nextPos = targetPos + offset;
             nextPos.y = transform.position.y;
-            transform.position = Vector3.Lerp(transform.position, nextPos, smoothing * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(transform.position, nextPos, ref velocity, smoothing);
         }
     }
 
