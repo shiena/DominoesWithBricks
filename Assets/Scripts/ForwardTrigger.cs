@@ -25,8 +25,6 @@ public class ForwardTrigger : MonoBehaviour
 
     private GameObject root;
 
-    private bool pushed = false;
-
     private CameraController camCon;
 
     private AudioSource audioSource;
@@ -47,11 +45,8 @@ public class ForwardTrigger : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     void OnTriggerEnter(Collider other)
     {
-        if (!pushed)
-        {
-            audioSource.PlayOneShot(audioClip);
-            camCon.moveCamera(root.transform.position);
-            pushed = !pushed;
-        }
+        audioSource.PlayOneShot(audioClip);
+        camCon.moveCamera(root.transform.position);
+        gameObject.GetComponent<Collider>().isTrigger = false;
     }
 }

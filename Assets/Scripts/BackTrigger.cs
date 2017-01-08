@@ -27,8 +27,6 @@ public class BackTrigger : MonoBehaviour
 
     private GameObject root;
 
-    private bool pushed = false;
-
     private CameraController camCon;
 
     private GameManager gameManager;
@@ -53,16 +51,13 @@ public class BackTrigger : MonoBehaviour
     /// <param name="other">The other Collider involved in this collision.</param>
     void OnTriggerEnter(Collider other)
     {
-        if (!pushed)
+        audioSource.PlayOneShot(audioClip);
+        var stop = root.name == "StartObj";
+        camCon.moveCamera(root.transform.position + Vector3.right * speed, stop);
+        if (stop)
         {
-            audioSource.PlayOneShot(audioClip);
-            var stop = root.name == "StartObj";
-            camCon.moveCamera(root.transform.position + Vector3.right * speed, stop);
-            if (stop)
-            {
-                gameManager.EnableButton();
-            }
-            pushed = !pushed;
+            gameManager.EnableButton();
         }
+        gameObject.GetComponent<Collider>().isTrigger = false;
     }
 }
