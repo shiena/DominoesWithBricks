@@ -23,17 +23,12 @@ public class ForwardTrigger : MonoBehaviour
 
     public AudioClip audioClip;
 
-    private GameObject root;
-
     private CameraController camCon;
 
     private AudioSource audioSource;
 
     void Start()
     {
-        var parents = gameObject.GetComponentsInParent(typeof(Transform));
-        root = parents[parents.Length - 1].gameObject;
-
         camCon = Camera.main.GetComponent<CameraController>();
 
         audioSource = gameObject.GetComponent<AudioSource>();
@@ -46,7 +41,7 @@ public class ForwardTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         audioSource.PlayOneShot(audioClip);
-        camCon.moveCamera(root.transform.position);
+        camCon.moveCamera(transform.root.position);
         gameObject.GetComponent<Collider>().isTrigger = false;
     }
 }

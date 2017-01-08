@@ -25,7 +25,6 @@ public class BackTrigger : MonoBehaviour
 
     public AudioClip audioClip;
 
-    private GameObject root;
 
     private CameraController camCon;
 
@@ -35,9 +34,6 @@ public class BackTrigger : MonoBehaviour
 
     void Start()
     {
-        var parents = gameObject.GetComponentsInParent(typeof(Transform));
-        root = parents[parents.Length - 1].gameObject;
-
         camCon = Camera.main.GetComponent<CameraController>();
 
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -52,8 +48,8 @@ public class BackTrigger : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         audioSource.PlayOneShot(audioClip);
-        var stop = root.name == "StartObj";
-        camCon.moveCamera(root.transform.position + Vector3.right * speed, stop);
+        var stop = transform.root.name == "StartObj";
+        camCon.moveCamera(transform.root.position + Vector3.right * speed, stop);
         if (stop)
         {
             gameManager.EnableButton();
