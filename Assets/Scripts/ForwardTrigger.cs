@@ -42,6 +42,6 @@ public class ForwardTrigger : MonoBehaviour
     {
         audioSource.PlayOneShot(audioClip);
         camCon.moveCamera(transform.root.position);
-        gameObject.GetComponent<Collider>().isTrigger = false;
+        gameObject.GetComponent<Collider>().enabled = false;
     }
 }

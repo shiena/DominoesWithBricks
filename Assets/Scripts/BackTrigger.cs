@@ -54,6 +54,6 @@ public class BackTrigger : MonoBehaviour
         {
             gameManager.EnableButton();
         }
-        gameObject.GetComponent<Collider>().isTrigger = false;
+        gameObject.GetComponent<Collider>().enabled = false;
     }
 }
